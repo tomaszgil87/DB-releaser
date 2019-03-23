@@ -36,6 +36,7 @@ public class ConnectionService {
 
     public void closeConnectin(Connection connection) throws SQLException {
         connection.close();
+        System.out.println("Connection closed");
     }
 
 }
