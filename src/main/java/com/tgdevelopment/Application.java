@@ -1,16 +1,14 @@
 package com.tgdevelopment;
 
-import com.tgdevelopment.services.TestConnectionService;
-import com.tgdevelopment.validation.OracleConnectionValidator;
+import com.tgdevelopment.services.ConnectionBuilder;
+import com.tgdevelopment.services.ConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-//import org.springframework.boot.autoconfigure.domain.EntityScan;
-//import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.sql.SQLRecoverableException;
+import java.sql.Connection;
 
 import static java.lang.System.exit;
 
@@ -20,10 +18,7 @@ import static java.lang.System.exit;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    private TestConnectionService testConnectionService;
-
-    @Autowired
-    private OracleConnectionValidator oracleConnectionValidator;
+    private ConnectionService connectionService;
 
     public static void main(String[] args) {
 
@@ -35,8 +30,10 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        testConnectionService.isConnectionValid(oracleConnectionValidator);
+        Connection connection = connectionService.createConnection();
+        connectionService.isConnectionValid(connection);
 
+        connectionService.closeConnectin(connection);
         exit(0);
     }
 

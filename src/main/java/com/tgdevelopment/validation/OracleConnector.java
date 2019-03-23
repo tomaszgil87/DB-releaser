@@ -7,17 +7,22 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Service
-public class OracleConnectionValidator implements ConnectorValidator {
+public class OracleConnector implements DBConnector {
 
     @Autowired
     private DataSource dataSource;
 
-    public OracleConnectionValidator() {
+    public OracleConnector() {
 
     }
 
     @Override
     public boolean isConnectionValid() throws SQLException {
         return dataSource.getConnection().isValid(1);
+    }
+
+    @Override
+    public void closeConnection() throws SQLException {
+        //TODO
     }
 }
