@@ -1,24 +1,27 @@
 package com.tgdevelopment.services;
 
+import com.tgdevelopment.validation.ConnectorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.sql.SQLRecoverableException;
+
+import static java.lang.System.exit;
 
 @Service
 public class TestConnectionService {
 
-    @Autowired
-    DataSource dataSource;
-
     TestConnectionService() { }
 
-    public boolean testOracleConnection() throws SQLException {
-        if (dataSource.getConnection().isValid(1)) {
-            return true;
-        } else {
-            return false;
+    public void isConnectionValid(ConnectorValidator connectorValidator) throws SQLException {
+        try {
+            boolean isConncetionValid = connectorValidator.isConnectionValid();
+            System.out.println("Connection created");
+        } catch (SQLRecoverableException e) {
+            System.out.println("Cannot create connection");
+            exit(1);
         }
     }
 
