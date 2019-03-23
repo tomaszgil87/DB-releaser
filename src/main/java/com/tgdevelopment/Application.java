@@ -20,10 +20,10 @@ import static java.lang.System.exit;
 public class Application implements CommandLineRunner {
 
     @Autowired
-    TestConnectionService testConnectionService;
+    private TestConnectionService testConnectionService;
 
     @Autowired
-    OracleConnectionValidator oracleConnectionValidator;
+    private OracleConnectionValidator oracleConnectionValidator;
 
     public static void main(String[] args) {
 

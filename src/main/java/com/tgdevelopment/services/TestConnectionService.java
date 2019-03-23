@@ -4,7 +4,6 @@ import com.tgdevelopment.validation.ConnectorValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.sql.SQLRecoverableException;
 

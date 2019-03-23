@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class OracleConnectionValidator implements ConnectorValidator {
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
     public OracleConnectionValidator() {
 
