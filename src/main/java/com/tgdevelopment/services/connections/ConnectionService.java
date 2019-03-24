@@ -1,6 +1,5 @@
-package com.tgdevelopment.services;
+package com.tgdevelopment.services.connections;
 
-import com.tgdevelopment.validation.DBConnector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +19,8 @@ public class ConnectionService {
         this.connectionBuilder = connectionBuilder;
     }
 
-    public Connection createConnection() throws SQLException{
-        return connectionBuilder.createConnection();
+    public Connection createConnection(String database) throws SQLException{
+        return connectionBuilder.createConnection(database);
     }
 
     public void isConnectionValid(Connection connection) throws SQLException {
@@ -34,7 +33,7 @@ public class ConnectionService {
         }
     }
 
-    public void closeConnectin(Connection connection) throws SQLException {
+    public void closeConnection(Connection connection) throws SQLException {
         connection.close();
         System.out.println("Connection closed");
     }

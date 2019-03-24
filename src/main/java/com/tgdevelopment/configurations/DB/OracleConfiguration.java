@@ -48,7 +48,7 @@ public class OracleConfiguration {
         return url;
     }
 
-    @Bean
+    @Bean(name = "OracleDataSource")
     public DataSource dataSource() throws SQLException {
         OracleDataSource oracleDataSource = new OracleDataSource();
         oracleDataSource.setUser(username);

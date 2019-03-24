@@ -1,7 +1,6 @@
 package com.tgdevelopment;
 
-import com.tgdevelopment.services.ConnectionBuilder;
-import com.tgdevelopment.services.ConnectionService;
+import com.tgdevelopment.services.connections.ConnectionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -30,10 +29,10 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Connection connection = connectionService.createConnection();
+        Connection connection = connectionService.createConnection("ORACLE");
         connectionService.isConnectionValid(connection);
 
-        connectionService.closeConnectin(connection);
+        connectionService.closeConnection(connection);
         exit(0);
     }
 
