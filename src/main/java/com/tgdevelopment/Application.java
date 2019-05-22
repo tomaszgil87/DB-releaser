@@ -1,8 +1,8 @@
 package com.tgdevelopment;
 
-import com.tgdevelopment.model.oracle.DumpObjects;
+import com.tgdevelopment.model.DumpObjectsDTO;
 import com.tgdevelopment.services.connections.ConnectionService;
-import com.tgdevelopment.services.dump.DumpOracleService;
+import com.tgdevelopment.services.dump.DumpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +23,7 @@ public class Application implements CommandLineRunner {
     private ConnectionService connectionService;
 
     @Autowired
-    private DumpOracleService dumpOracleService;
+    private DumpService dumpService;
 
     public static void main(String[] args) {
 
@@ -38,7 +38,7 @@ public class Application implements CommandLineRunner {
         Connection connection = connectionService.createConnection("ORACLE");
         System.out.println("Connection created");
 
-        List<DumpObjects> result = dumpOracleService.getDumpList(connection);
+        List<DumpObjectsDTO> result = dumpService.getDumpList(connection);
 
         connectionService.closeConnection(connection);
         exit(0);
