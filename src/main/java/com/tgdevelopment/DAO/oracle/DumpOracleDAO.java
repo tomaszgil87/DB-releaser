@@ -13,10 +13,11 @@ public class DumpOracleDAO implements DumpDAO {
 
     @Override
     public List<DumpObjectsDTO> getDumpObjects(Connection con) throws SQLException {
-        String query = "select name, type, line, text " +
+        String query = "select name, type, LISTAGG(text, chr(13)) WITHIN GROUP (ORDER BY name, type, line) AS text " +
                         "from user_source us " +
                         "where us.type in ('PACKAGE', 'PACKAGE BODY', 'PROCEDURE', 'FUNCTION', 'TRIGGER', 'TYPE') " +
-                        "order by name, type, line";
+                        "group by name, type " +
+                        "order by name, type ";
 
         List<DumpObjectsDTO> results = new LinkedList<>();
         Statement stmt = null;
@@ -28,7 +29,6 @@ public class DumpOracleDAO implements DumpDAO {
                 results.add(DumpObjectsDTO.builder()
                                        .withName(rs.getString("name"))
                                        .withText(rs.getString("text"))
-                                       .withLine(rs.getInt("line"))
                                        .withType(rs.getString("type"))
                                        .build()
                                        );

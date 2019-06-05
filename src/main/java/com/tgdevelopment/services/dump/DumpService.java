@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
 public class DumpService {
 
-    private DumpDAO dumpDAO;
+    private final DumpDAO dumpDAO;
 
     @Autowired
     public DumpService(DumpDAO dumpDAO) {
@@ -22,6 +23,10 @@ public class DumpService {
 
     public List<DumpObjectsDTO> getDumpList(Connection conn) {
 
+        return getObjects(conn);
+    }
+
+    private List<DumpObjectsDTO> getObjects(Connection conn) {
         List<DumpObjectsDTO> result = new ArrayList<>();
         try {
             result = dumpDAO.getDumpObjects(conn);

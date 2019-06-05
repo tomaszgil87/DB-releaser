@@ -9,7 +9,7 @@ import java.sql.SQLException;
 @Service
 public class ConnectionBuilder {
 
-    private ConnectionFactory connectionFactory;
+    private final ConnectionFactory connectionFactory;
 
     @Autowired
     public ConnectionBuilder(ConnectionFactory connectionFactory){

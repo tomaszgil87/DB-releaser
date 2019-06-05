@@ -12,7 +12,7 @@ import static java.lang.System.exit;
 @Service
 public class ConnectionService {
 
-    private ConnectionBuilder connectionBuilder;
+    private final ConnectionBuilder connectionBuilder;
 
     @Autowired
     ConnectionService(ConnectionBuilder connectionBuilder) {
