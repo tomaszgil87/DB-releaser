@@ -1,6 +1,6 @@
-package com.tgdevelopment.controllers;
+package com.tgdevelopment.dump.controllers;
 
-import com.tgdevelopment.common.FilesCreator;
+import com.tgdevelopment.dump.FilesCreator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 

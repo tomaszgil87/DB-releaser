@@ -1,7 +1,7 @@
-package com.tgdevelopment.DAO.oracle;
+package com.tgdevelopment.dump.DAO.oracle;
 
-import com.tgdevelopment.DAO.DumpDAO;
-import com.tgdevelopment.model.DumpObjectsDTO;
+import com.tgdevelopment.dump.DAO.DumpDAO;
+import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

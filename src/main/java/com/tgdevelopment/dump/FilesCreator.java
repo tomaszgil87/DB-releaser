@@ -1,7 +1,6 @@
-package com.tgdevelopment.common;
+package com.tgdevelopment.dump;
 
-import com.tgdevelopment.model.DumpObjectsDTO;
-import com.tgdevelopment.services.dump.DumpService;
+import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

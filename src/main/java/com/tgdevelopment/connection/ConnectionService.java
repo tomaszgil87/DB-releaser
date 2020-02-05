@@ -1,4 +1,4 @@
-package com.tgdevelopment.services.connections;
+package com.tgdevelopment.connection;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

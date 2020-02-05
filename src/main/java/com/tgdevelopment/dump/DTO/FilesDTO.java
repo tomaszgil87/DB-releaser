@@ -1,4 +1,4 @@
-package com.tgdevelopment.model;
+package com.tgdevelopment.dump.DTO;
 
 import lombok.AllArgsConstructor;
 

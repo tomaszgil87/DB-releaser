@@ -1,6 +1,6 @@
-package com.tgdevelopment.DAO;
+package com.tgdevelopment.dump.DAO;
 
-import com.tgdevelopment.model.DumpObjectsDTO;
+import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
 
 import java.sql.Connection;
 import java.sql.SQLException;

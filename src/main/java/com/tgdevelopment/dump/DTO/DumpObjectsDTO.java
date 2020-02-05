@@ -1,4 +1,4 @@
-package com.tgdevelopment.model;
+package com.tgdevelopment.dump.DTO;
 
 import lombok.Builder;
 
@@ -9,7 +9,5 @@ public class DumpObjectsDTO {
     private String type;
     private int line;
     private String text;
-
-    private  DumpObjectsDTO() { }
 
 }

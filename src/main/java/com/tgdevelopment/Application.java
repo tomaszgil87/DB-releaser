@@ -1,10 +1,8 @@
 package com.tgdevelopment;
 
-import com.tgdevelopment.controllers.DbController;
-import com.tgdevelopment.services.connections.ConnectionService;
-import com.tgdevelopment.services.dump.DumpService;
+import com.tgdevelopment.dump.controllers.DbController;
+import com.tgdevelopment.connection.ConnectionService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

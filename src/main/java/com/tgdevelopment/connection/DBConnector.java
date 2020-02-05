@@ -1,4 +1,4 @@
-package com.tgdevelopment.services.connections;
+package com.tgdevelopment.connection;
 
 
 import java.sql.Connection;
