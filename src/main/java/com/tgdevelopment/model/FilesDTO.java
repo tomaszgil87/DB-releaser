@@ -1,18 +1,17 @@
 package com.tgdevelopment.model;
 
+import lombok.AllArgsConstructor;
+
 import java.nio.file.Path;
 import java.sql.Connection;
 
+@AllArgsConstructor
 public class FilesDTO {
 
-    private Connection connection;
+    private final Connection connection;
 
-    private Path directory;
+    private final Path directory;
 
-    public FilesDTO(Connection connection, Path directory) {
-        this.connection = connection;
-        this.directory = directory;
-    }
 
     public Connection getConnection() {
         return this.connection;

@@ -1,6 +1,6 @@
 package com.tgdevelopment.services.connections;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -10,14 +10,10 @@ import java.sql.SQLRecoverableException;
 import static java.lang.System.exit;
 
 @Service
+@AllArgsConstructor
 public class ConnectionService {
 
     private final ConnectionBuilder connectionBuilder;
-
-    @Autowired
-    ConnectionService(ConnectionBuilder connectionBuilder) {
-        this.connectionBuilder = connectionBuilder;
-    }
 
     public Connection createConnection(String database) throws SQLException{
         return connectionBuilder.createConnection(database);

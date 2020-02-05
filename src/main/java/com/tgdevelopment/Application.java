@@ -3,6 +3,7 @@ package com.tgdevelopment;
 import com.tgdevelopment.controllers.DbController;
 import com.tgdevelopment.services.connections.ConnectionService;
 import com.tgdevelopment.services.dump.DumpService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -16,13 +17,11 @@ import static java.lang.System.exit;
 @SpringBootApplication
 //@EnableJpaRepositories(basePackages = "com.tgdevelopment")
 //@EntityScan("com.tgdevelopment")
+@AllArgsConstructor
 public class Application implements CommandLineRunner {
 
-    @Autowired
-    private ConnectionService connectionService;
-
-    @Autowired
-    private DbController dbController;
+    private final ConnectionService connectionService;
+    private final DbController dbController;
 
     public static void main(String[] args) {
 

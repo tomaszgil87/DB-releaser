@@ -1,20 +1,16 @@
 package com.tgdevelopment.services.connections;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 @Service
+@AllArgsConstructor
 public class ConnectionBuilder {
 
     private final ConnectionFactory connectionFactory;
-
-    @Autowired
-    public ConnectionBuilder(ConnectionFactory connectionFactory){
-        this.connectionFactory = connectionFactory;
-    }
 
     public Connection createConnection(String database) throws SQLException {
         DBConnector dbConnector = connectionFactory.getConnector(database);

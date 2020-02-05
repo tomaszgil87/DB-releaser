@@ -1,18 +1,14 @@
 package com.tgdevelopment.controllers;
 
 import com.tgdevelopment.common.FilesCreator;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 
 @Controller
+@AllArgsConstructor
 public class DbController {
 
     private final FilesCreator filesCreator;
-
-    @Autowired
-    public DbController(FilesCreator filesCreator) {
-        this.filesCreator = filesCreator;
-    }
 
     public void dumpFiles(String directory) {
 

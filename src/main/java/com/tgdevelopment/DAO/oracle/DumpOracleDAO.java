@@ -4,7 +4,10 @@ import com.tgdevelopment.DAO.DumpDAO;
 import com.tgdevelopment.model.DumpObjectsDTO;
 import org.springframework.stereotype.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -27,9 +30,9 @@ public class DumpOracleDAO implements DumpDAO {
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 results.add(DumpObjectsDTO.builder()
-                                       .withName(rs.getString("name"))
-                                       .withText(rs.getString("text"))
-                                       .withType(rs.getString("type"))
+                                       .name(rs.getString("name"))
+                                       .text(rs.getString("text"))
+                                       .type(rs.getString("type"))
                                        .build()
                                        );
             }

@@ -1,13 +1,13 @@
 package com.tgdevelopment.services.connections;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class ConnectionFactory {
 
-    @Autowired
-    private OracleConnector oracleConnector;
+    private final OracleConnector oracleConnector;
 
 
     public DBConnector getConnector(String connector) {

@@ -2,24 +2,19 @@ package com.tgdevelopment.services.dump;
 
 import com.tgdevelopment.DAO.DumpDAO;
 import com.tgdevelopment.model.DumpObjectsDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class DumpService {
 
     private final DumpDAO dumpDAO;
-
-    @Autowired
-    public DumpService(DumpDAO dumpDAO) {
-        this.dumpDAO = dumpDAO;
-    }
 
     public List<DumpObjectsDTO> getDumpList(Connection conn) {
 
