@@ -1,14 +1,14 @@
 package com.tgdevelopment;
 
-import com.tgdevelopment.dump.controllers.DbController;
+import com.tgdevelopment.configurations.Databases;
+import com.tgdevelopment.connection.DBConnector;
+import com.tgdevelopment.dump.DbController;
 import com.tgdevelopment.connection.ConnectionService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.sql.Connection;
 
 import static java.lang.System.exit;
 
@@ -29,14 +29,14 @@ public class Application implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
-        Connection connection = connectionService.createConnection("ORACLE");
+        DBConnector connector = connectionService.createConnection(Databases.ORACLE);
         System.out.println("Connection created");
 
         dbController.dumpFiles("test");
 
-        connectionService.closeConnection(connection);
+        connector.close();
         exit(0);
     }
 

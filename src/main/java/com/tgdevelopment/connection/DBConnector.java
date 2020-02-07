@@ -1,15 +1,10 @@
 package com.tgdevelopment.connection;
 
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 public interface DBConnector {
 
-    boolean isConnectionValid() throws SQLException;
-
-    void closeConnection(Connection connection) throws SQLException;
-
-    Connection createConnection() throws SQLException;
+    boolean isValid();
+    void close();
+    void create();
 
 }

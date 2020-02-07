@@ -1,5 +1,6 @@
 package com.tgdevelopment.dump.DAO.oracle;
 
+import com.tgdevelopment.connection.exceptions.ConnectionException;
 import com.tgdevelopment.dump.DAO.DumpDAO;
 import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
 import org.springframework.stereotype.Repository;
@@ -11,23 +12,18 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.tgdevelopment.dump.DAO.oracle.Queries.GET_OBJECTS;
+
 @Repository
 public class DumpOracleDAO implements DumpDAO {
 
     @Override
-    public List<DumpObjectsDTO> getDumpObjects(Connection con) throws SQLException {
-        String query = "select name, type, LISTAGG(text, chr(13)) WITHIN GROUP (ORDER BY name, type, line) AS text " +
-                        "from user_source us " +
-                        "where us.type in ('PACKAGE', 'PACKAGE BODY', 'PROCEDURE', 'FUNCTION', 'TRIGGER', 'TYPE') " +
-                        "group by name, type " +
-                        "order by name, type ";
+    public List<DumpObjectsDTO> getDumpObjects(Connection con) {
+
 
         List<DumpObjectsDTO> results = new LinkedList<>();
-        Statement stmt = null;
-        ResultSet rs = null;
-        try {
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(query);
+        try(Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(GET_OBJECTS)) {
             while (rs.next()) {
                 results.add(DumpObjectsDTO.builder()
                                        .name(rs.getString("name"))
@@ -38,12 +34,9 @@ public class DumpOracleDAO implements DumpDAO {
             }
         } catch (SQLException e ) {
             System.out.print(e);
-        } finally {
-            if(stmt != null) {stmt.close();}
-            if(rs != null) {rs.close();}
+            throw new ConnectionException(e.getMessage());
         }
 
         return results;
     }
-
 }

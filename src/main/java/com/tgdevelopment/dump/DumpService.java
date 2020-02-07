@@ -3,6 +3,7 @@ package com.tgdevelopment.dump;
 import com.tgdevelopment.dump.DAO.DumpDAO;
 import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -10,11 +11,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lombok.AccessLevel.PRIVATE;
+
 @Service
 @AllArgsConstructor
+@FieldDefaults(makeFinal = true, level = PRIVATE)
 public class DumpService {
 
-    private final DumpDAO dumpDAO;
+    DumpDAO dumpDAO;
 
     public List<DumpObjectsDTO> getDumpList(Connection conn) {
 

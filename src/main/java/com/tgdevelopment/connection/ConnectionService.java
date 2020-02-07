@@ -1,37 +1,33 @@
 package com.tgdevelopment.connection;
 
+import com.tgdevelopment.configurations.Databases;
+import com.tgdevelopment.connection.oracle.ConnectionValidator;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.SQLRecoverableException;
 
-import static java.lang.System.exit;
+import static lombok.AccessLevel.PRIVATE;
 
 @Service
 @AllArgsConstructor
+@FieldDefaults(makeFinal = true, level = PRIVATE)
 public class ConnectionService {
 
-    private final ConnectionBuilder connectionBuilder;
+    ConnectionFactory connectionFactory;
+    ConnectionValidator connectionValidator;
 
-    public Connection createConnection(String database) throws SQLException{
-        return connectionBuilder.createConnection(database);
+    public DBConnector createConnection(Databases database){
+        return connectionFactory.create(database);
     }
 
-    public void isConnectionValid(Connection connection) throws SQLException {
-        try {
-            boolean isConncetionValid = connection.isValid(1);
-            System.out.println("Connection created");
-        } catch (SQLRecoverableException e) {
-            System.out.println("Cannot create connection");
-            exit(1);
-        }
+    public void isConnectionValid(Connection connection){
+        connectionValidator.isConnectionValid(connection);
     }
 
-    public void closeConnection(Connection connection) throws SQLException {
-        connection.close();
-        System.out.println("Connection closed");
-    }
+//    public void closeConnection(Connection connection){
+//        connectionFactory.close(connection);
+//    }
 
 }
