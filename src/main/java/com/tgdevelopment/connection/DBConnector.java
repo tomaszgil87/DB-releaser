@@ -5,6 +5,5 @@ public interface DBConnector {
 
     boolean isValid();
     void close();
-    void create();
 
 }

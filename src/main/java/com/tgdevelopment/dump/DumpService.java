@@ -30,7 +30,7 @@ public class DumpService {
         try {
             result = dumpDAO.getDumpObjects(conn);
         } catch(SQLException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
         return result;

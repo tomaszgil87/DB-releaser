@@ -1,33 +1,22 @@
 package com.tgdevelopment.connection.oracle;
 
+import com.tgdevelopment.configurations.Databases;
 import com.tgdevelopment.connection.DBConnector;
 import com.tgdevelopment.connection.exceptions.ConnectionException;
-import lombok.Setter;
+import lombok.Value;
 import lombok.experimental.FieldDefaults;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import static lombok.AccessLevel.PRIVATE;
 
-@Component
-@FieldDefaults(level = PRIVATE)
+@FieldDefaults(level = PRIVATE, makeFinal = true)
+@Value
 public class OracleConnector implements DBConnector {
 
-    @Autowired
-    @Qualifier("OracleDataSource")
-    DataSource dataSource;
-
-    @Setter
     Connection connection;
-
-    public OracleConnector(Connection connection) {
-        this.connection = connection;
-    }
+    Databases database;
 
     @Override
     public boolean isValid() {
@@ -47,12 +36,4 @@ public class OracleConnector implements DBConnector {
         }
     }
 
-    @Override
-    public void create() {
-        try {
-            setConnection(dataSource.getConnection());
-        } catch(SQLException e) {
-            throw new ConnectionException(e.getMessage());
-        }
-    }
 }

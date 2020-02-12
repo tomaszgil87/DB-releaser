@@ -4,6 +4,7 @@ import oracle.jdbc.pool.OracleDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 
 @Configuration
 @ConfigurationProperties("oracle")
+@PropertySource("classpath:application.properties")
 public class OracleConfiguration {
 
 //    @NotNull

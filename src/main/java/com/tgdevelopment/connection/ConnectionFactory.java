@@ -1,24 +1,31 @@
 package com.tgdevelopment.connection;
 
 import com.tgdevelopment.configurations.Databases;
+import com.tgdevelopment.connection.exceptions.ConnectionException;
 import com.tgdevelopment.connection.oracle.OracleConnector;
-import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
+import java.sql.SQLException;
+
 import static com.tgdevelopment.configurations.Databases.ORACLE;
-import static lombok.AccessLevel.PRIVATE;
 
 @Repository
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = PRIVATE)
 public class ConnectionFactory {
 
-    OracleConnector oracleConnector;
+    @Autowired
+    @Qualifier("OracleDataSource")
+    private DataSource dataSource;
 
     public DBConnector create(Databases database) {
         if (database.equals(ORACLE)) {
-            return oracleConnector;
+            try {
+                return new OracleConnector(dataSource.getConnection(), ORACLE);
+            } catch (SQLException e) {
+                throw new ConnectionException(e.getMessage());
+            }
         }
         return null;
     }
