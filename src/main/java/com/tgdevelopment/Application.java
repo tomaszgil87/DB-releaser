@@ -3,7 +3,7 @@ package com.tgdevelopment;
 import com.tgdevelopment.configurations.Databases;
 import com.tgdevelopment.connection.ConnectionService;
 import com.tgdevelopment.connection.DBConnector;
-import com.tgdevelopment.dump.DbController;
+import com.tgdevelopment.dump.DumpService;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
@@ -17,7 +17,7 @@ import static java.lang.System.exit;
 public class Application implements CommandLineRunner {
 
     private final ConnectionService connectionService;
-    private final DbController dbController;
+    private final DumpService dumpService;
 
     public static void main(String[] args) {
 
@@ -32,7 +32,7 @@ public class Application implements CommandLineRunner {
         DBConnector connector = connectionService.createConnection(Databases.ORACLE);
         System.out.println("Connection created");
 
-        dbController.dumpFiles("test");
+        dumpService.dump(connector);
 
         connector.close();
         exit(0);

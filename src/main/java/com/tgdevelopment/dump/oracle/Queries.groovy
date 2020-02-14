@@ -1,6 +1,6 @@
-package com.tgdevelopment.dump.DAO.oracle
+package com.tgdevelopment.dump.oracle
 
-import static com.tgdevelopment.dump.DAO.oracle.ObjectTypes.createSqlFilter
+import static ObjectTypes.createSqlFilter
 
 class Queries {
 
@@ -8,7 +8,7 @@ class Queries {
     """
     select name, type, LISTAGG(text, chr(13)) WITHIN GROUP (ORDER BY name, type, line) AS text
     from user_source us
-    where us.type in (""" + createSqlFilter() + """)
+    where us.type in ()
     group by name, type
     order by name, type
     """

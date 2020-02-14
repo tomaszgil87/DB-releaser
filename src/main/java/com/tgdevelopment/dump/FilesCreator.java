@@ -1,24 +1,7 @@
 package com.tgdevelopment.dump;
 
-import com.tgdevelopment.dump.DTO.DumpObjectsDTO;
-import lombok.AllArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
+public interface FilesCreator {
 
-import java.sql.Connection;
-import java.util.List;
+    void dump();
 
-import static lombok.AccessLevel.PRIVATE;
-
-@Service
-@AllArgsConstructor
-@FieldDefaults(makeFinal = true, level = PRIVATE)
-public class FilesCreator {
-
-    DumpService dumpService;
-
-    public List<DumpObjectsDTO> createFiles(Connection connection) {
-        List<DumpObjectsDTO> objects = dumpService.getDumpList(connection);
-        return objects;
-    }
 }

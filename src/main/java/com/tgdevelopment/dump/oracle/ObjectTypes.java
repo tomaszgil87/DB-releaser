@@ -1,4 +1,4 @@
-package com.tgdevelopment.dump.DAO.oracle;
+package com.tgdevelopment.dump.oracle;
 
 public enum ObjectTypes {
 

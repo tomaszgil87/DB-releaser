@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 
-import static com.tgdevelopment.configurations.Databases.ORACLE;
 
 @Repository
 public class ConnectionFactory {
@@ -20,9 +19,9 @@ public class ConnectionFactory {
     private DataSource dataSource;
 
     public DBConnector create(Databases database) {
-        if (database.equals(ORACLE)) {
+        if (database.equals("ORACLE")) {
             try {
-                return new OracleConnector(dataSource.getConnection(), ORACLE);
+                return new OracleConnector(dataSource.getConnection(), database);
             } catch (SQLException e) {
                 throw new ConnectionException(e.getMessage());
             }

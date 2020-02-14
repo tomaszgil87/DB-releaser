@@ -36,4 +36,14 @@ public class OracleConnector implements DBConnector {
         }
     }
 
+    @Override
+    public Databases getDataBase() {
+        return database;
+    }
+
+    @Override
+    public boolean equal(Databases databases) {
+        return this.database.getValue().equals(databases.getValue());
+    }
+
 }
