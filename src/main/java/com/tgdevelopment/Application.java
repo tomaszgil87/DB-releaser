@@ -5,19 +5,22 @@ import com.tgdevelopment.connection.ConnectionService;
 import com.tgdevelopment.connection.DBConnector;
 import com.tgdevelopment.databases.DatabaseService;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.boot.Banner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import static java.lang.System.exit;
+import static lombok.AccessLevel.PRIVATE;
 
 @SpringBootApplication
 @AllArgsConstructor
+@FieldDefaults(makeFinal = true, level = PRIVATE)
 public class Application implements CommandLineRunner {
 
-    private final ConnectionService connectionService;
-    private final DatabaseService databaseService;
+    ConnectionService connectionService;
+    DatabaseService databaseService;
 
     public static void main(String[] args) {
 
