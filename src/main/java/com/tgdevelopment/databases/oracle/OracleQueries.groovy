@@ -1,14 +1,12 @@
-package com.tgdevelopment.dump.oracle
+package com.tgdevelopment.databases.oracle
 
-import static ObjectTypes.createSqlFilter
+class OracleQueries {
 
-class Queries {
-
-    public static String GET_OBJECTS =
+    public static String GET_OBJECTS_WITH_TYPES =
     """
     select name, type, LISTAGG(text, chr(13)) WITHIN GROUP (ORDER BY name, type, line) AS text
     from user_source us
-    where us.type in ()
+    where us.type in (?types)
     group by name, type
     order by name, type
     """

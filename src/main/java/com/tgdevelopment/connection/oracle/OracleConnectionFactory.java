@@ -13,12 +13,10 @@ import static com.tgdevelopment.configurations.Databases.ORACLE;
 
 public class OracleConnectionFactory implements AbstractConnectionFactory {
 
-    ApplicationContext context =
-            new AnnotationConfigApplicationContext(SpringConfig.class);
-
     private DataSource dataSource;
 
     public OracleConnectionFactory() {
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
         dataSource = (DataSource) context.getBean("OracleDataSource");
     }
 

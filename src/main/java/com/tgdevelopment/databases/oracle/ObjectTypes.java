@@ -1,4 +1,4 @@
-package com.tgdevelopment.dump.oracle;
+package com.tgdevelopment.databases.oracle;
 
 public enum ObjectTypes {
 
@@ -23,7 +23,7 @@ public enum ObjectTypes {
         for (ObjectTypes o : ObjectTypes.values()) {
             str.append(SEPARATOR + SQL_QUATATION).append(o.value).append(SQL_QUATATION);
         }
-        return str.toString();
+        return str.toString().replaceFirst(SEPARATOR, "");
     }
 
 }

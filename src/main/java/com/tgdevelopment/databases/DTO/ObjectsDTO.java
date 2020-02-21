@@ -1,11 +1,11 @@
-package com.tgdevelopment.dump.DTO;
+package com.tgdevelopment.databases.DTO;
 
 import lombok.Builder;
 import lombok.Value;
 
 @Builder
 @Value
-public class DumpObjectsDTO {
+public class ObjectsDTO {
 
     private String name;
     private String type;

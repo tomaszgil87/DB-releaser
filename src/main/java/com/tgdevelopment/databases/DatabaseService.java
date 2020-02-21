@@ -1,4 +1,4 @@
-package com.tgdevelopment.dump;
+package com.tgdevelopment.databases;
 
 import com.tgdevelopment.connection.DBConnector;
 import lombok.AllArgsConstructor;
@@ -7,17 +7,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static java.util.Optional.ofNullable;
+import static com.tgdevelopment.databases.ObjectsCreatorFactory.create;
 import static lombok.AccessLevel.PRIVATE;
 
 @Service
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = PRIVATE)
-public class DumpService {
+public class DatabaseService {
 
     public void dump(DBConnector connector){
-        Optional<FilesCreator> filesCreator = ofNullable(FilesCreatorFactory.create(connector));
-        filesCreator.ifPresent(FilesCreator::dump);
+        Optional<ObjectsCreator> filesCreator = create(connector);
+        filesCreator.ifPresent(ObjectsCreator::dump);
     }
 
 }
