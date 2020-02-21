@@ -15,9 +15,9 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(makeFinal = true, level = PRIVATE)
 public class DatabaseService {
 
-    public void dump(DBConnector connector){
+    public void get(DBConnector connector){
         Optional<ObjectsCreator> filesCreator = create(connector);
-        filesCreator.ifPresent(ObjectsCreator::dump);
+        filesCreator.ifPresent(ObjectsCreator::get);
     }
 
 }

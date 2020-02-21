@@ -20,8 +20,8 @@ public class OracleObjectsCreator implements ObjectsCreator {
     }
 
     @Override
-    public void dump() {
-        List<ObjectsDTO> objects = objectsDAO.getDumpObjects();
+    public void get() {
+        List<ObjectsDTO> objects = objectsDAO.get();
         System.out.println("Success");
     }
 }

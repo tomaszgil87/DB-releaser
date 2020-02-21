@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ObjectsDAO {
 
-    List<ObjectsDTO> getDumpObjects();
+    List<ObjectsDTO> get();
 
 }

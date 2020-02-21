@@ -22,7 +22,7 @@ public class ObjectsOracleDAO implements ObjectsDAO {
     DBConnector connector;
 
     @Override
-    public List<ObjectsDTO> getDumpObjects() {
+    public List<ObjectsDTO> get() {
 
         List<ObjectsDTO> results = new LinkedList<>();
 

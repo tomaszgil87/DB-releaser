@@ -35,7 +35,7 @@ public class Application implements CommandLineRunner {
         DBConnector connector = connectionService.createConnection(Databases.ORACLE);
         System.out.println("Connection created");
 
-        databaseService.dump(connector);
+        databaseService.get(connector);
 
         connector.close();
         exit(0);
